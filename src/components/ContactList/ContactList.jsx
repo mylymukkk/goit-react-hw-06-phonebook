@@ -1,30 +1,20 @@
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import { ContactListItem } from '../ContactListItem/ContactListItem';
+import { selectFilteredContacts } from 'redux/selectors';
 
 import css from './ContactList.module.css';
 
-export const ContactList = ({ contacts, onClick }) => {
-  if (contacts.length > 0) {
+export const ContactList = () => {
+  const filteredContacts = useSelector(selectFilteredContacts);
+
+  if (filteredContacts.length > 0) {
     return (
       <ul className={css.contactsList}>
-        {contacts.map(contact => (
-          <ContactListItem
-            key={contact.id}
-            contact={contact}
-            onClick={() => onClick(contact.id)}
-          />
+        {filteredContacts.map(contact => (
+          <ContactListItem key={contact.id} contact={contact} />
         ))}
       </ul>
     );
-  } else {
-    return <p className={css.noContactsText}>No contacts yet</p>;
   }
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({ id: PropTypes.string.isRequired })
-  ).isRequired,
-  onClick: PropTypes.func.isRequired,
 };

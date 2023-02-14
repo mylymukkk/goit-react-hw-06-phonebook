@@ -9,14 +9,18 @@
   padding: 20px;
   margin: 0 auto;
 
-  border-radius: 5px;
+  border-radius: 3px;
 
   background-color: #fff;
+
+  box-shadow: 2px 2px 5px 0px rgba(240, 240, 240, 1);
 }
 
 .mainHeader,
 .sectionHeader {
   font-family: sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 .mainHeader {
